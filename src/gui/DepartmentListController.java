@@ -47,7 +47,8 @@ public class DepartmentListController implements Initializable{
 	@FXML
 	public void onBtNewAction(ActionEvent event) {
 		Stage parentStage = Utils.currentStage(event);
-		createDialogForm("/gui/DepartmentForm.fxml", null);
+		Department obj = new Department();
+		createDialogForm(obj,"/gui/DepartmentForm.fxml", null);
 	}
 	
 	public void setDepartmentService(DepartmentService service) {
@@ -77,17 +78,21 @@ public class DepartmentListController implements Initializable{
 		tableViewDepartment.setItems(obsList);
 	}
 	
-	private void createDialogForm(String absoluteName, Stage parentStage) {
+	private void createDialogForm(Department obj ,String absoluteName, Stage parentStage) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(absoluteName));
 			Pane pane = loader.load();
+			
+			DepartmentFormController controller = loader.getController();
+			controller.setDepartment(obj);
+			controller.updateFormData();
 			
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Enter Department data");
 			dialogStage.setScene(new Scene(pane));
 			dialogStage.setResizable(false);
 			dialogStage.initOwner(parentStage);
-			dialogStage.initModality(Modality.APPLICATION_MODAL); //Enquanto você não fechar essa janela não pode acessar a janela anterior
+			dialogStage.initModality(Modality.WINDOW_MODAL); //Enquanto você não fechar essa janela não pode acessar a janela anterior
 			dialogStage.showAndWait(); //Carrega a janela e espera, caso contrário ela mostraria e fecharia
 			
 			

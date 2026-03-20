@@ -25,6 +25,9 @@ public class DepartmentService {
 		} else {
 			System.out.println("UPDATE");
 		}
-
+	}
+	
+	public void remove(Department obj) {
+		System.out.println("REMOVE");
 	}
 }

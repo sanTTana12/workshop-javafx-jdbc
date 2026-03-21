@@ -20,7 +20,7 @@ import model.entities.Seller;
 import model.exceptions.ValidationException;
 import model.services.SellerService;
 
-public class SellerFormController implements Initializable {
+public class SellerFormC implements Initializable {
 
 	private Seller entity;
 

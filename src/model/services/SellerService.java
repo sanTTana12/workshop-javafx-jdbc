@@ -1,7 +1,11 @@
 package model.services;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import gui.util.Alerts;
+import javafx.scene.control.Alert.AlertType;
 import model.entities.Seller;
 
 public class SellerService {
@@ -9,24 +13,20 @@ public class SellerService {
 	List<Seller> list = new ArrayList<Seller>();
 
 	public List<Seller> findAll() {
-		if (list.size() < 3) {
-			list.add(new Seller(1, "Books"));
-			list.add(new Seller(2, "Computers"));
-			list.add(new Seller(3, "Electronics"));
-		}
+		list.add(new Seller(1, "Maria", "maria@gmail.com", null, 200.0));
 		return list;
 	}
 
 	public void saveOrUpdate(Seller obj) {
 
 		if (obj.getId() == null) {
-			System.out.println("ADD");
+			Alerts.showAlert("SAVE", null, "Saved", AlertType.INFORMATION);
 		} else {
-			System.out.println("UPDATE");
+			Alerts.showAlert("UPDATE", null, "Updated", AlertType.INFORMATION);
 		}
 	}
 	
 	public void remove(Seller obj) {
-		System.out.println("REMOVE");
+		Alerts.showAlert("REMOVE", null, "The content was removed", AlertType.INFORMATION);
 	}
 }

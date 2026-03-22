@@ -3,6 +3,8 @@ package model.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import gui.util.Alerts;
+import javafx.scene.control.Alert.AlertType;
 import model.entities.Department;
 
 public class DepartmentService {
@@ -21,13 +23,13 @@ public class DepartmentService {
 	public void saveOrUpdate(Department obj) {
 
 		if (obj.getId() == null) {
-			System.out.println("ADD");
+			Alerts.showAlert("SAVE", null, "Saved", AlertType.INFORMATION);
 		} else {
-			System.out.println("UPDATE");
+			Alerts.showAlert("UPDATE", null, "Updated", AlertType.INFORMATION);
 		}
 	}
 	
 	public void remove(Department obj) {
-		System.out.println("REMOVE");
+		Alerts.showAlert("REMOVE", null, "The content was removed", AlertType.INFORMATION);
 	}
 }
